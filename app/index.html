@@ -1,23 +1,68 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
-<link rel="stylesheet" href="./style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#18151d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%2318151d'/%3E%3Ctext x='5' y='23' font-family='sans-serif' font-size='19' font-weight='700' fill='%23ff3b91'%3EVC%3C/text%3E%3C/svg%3E">
+  <title>Vice Cover</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="src/main.js"></script>
 </head>
 <body>
-<main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
-  </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
-</main>
-<script type="module" src="./src/main.js"></script>
+  <div id="editor" class="editor-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Vice Cover home"><span class="brand-mark">VC</span><span>VICE COVER</span></a>
+      <div class="topline"><span class="live-dot"></span> YOUR POSTER STUDIO</div>
+      <button id="export" class="button button-primary export-top"><span>Export PNG</span><span aria-hidden="true">↗</span></button>
+    </header>
+    <main class="workspace">
+      <aside class="sidebar">
+        <div class="intro"><div class="eyebrow">CREATIVE TOOLKIT <span>01 / 04</span></div><h1>Make the night<br><em>your own.</em></h1><p>Portraits, motion and Miami heat. Compose a frame that feels like yours.</p></div>
+        <div class="steps"><span class="step active"><b>1</b> Add photos</span><i></i><span class="step"><b>2</b> Write your caption</span><i></i><span class="step"><b>3</b> Export</span></div>
+        <section class="control-section">
+          <div class="section-heading"><span class="number">01</span><h2>Composition</h2><span class="section-note">LAYOUT</span></div>
+          <div class="layout-grid">
+            <button class="layout-card selected" data-layout="classic"><span class="mini-layout classic"><i></i><i></i><i></i></span><span>Vice Classic</span></button>
+            <button class="layout-card" data-layout="double"><span class="mini-layout double"><i></i><i></i></span><span>Double Take</span></button>
+            <button class="layout-card" data-layout="strip"><span class="mini-layout strip"><i></i><i></i><i></i><i></i></span><span>Sunset Strip</span></button>
+          </div>
+        </section>
+        <section class="control-section photo-section">
+          <div class="section-heading"><span class="number">02</span><h2>Photo panels</h2><span id="panel-count" class="section-note">3 PANELS</span></div>
+          <div id="panel-list" class="panel-list"></div>
+          <div class="button-row"><button id="upload" class="button button-outline">＋ Add photo</button><button id="all-panels" class="button button-quiet">Use in all</button></div>
+          <input id="file-input" type="file" accept="image/*" hidden>
+          <div class="sample-header"><span>TRY A SAMPLE</span><span class="sample-rule"></span></div>
+          <div class="samples">
+            <button class="sample" data-sample="pier.jpg"><span class="sample-thumb pier-thumb"></span><span>Pier lights</span></button>
+            <button class="sample" data-sample="boulevard.jpg"><span class="sample-thumb boulevard-thumb"></span><span>Ocean Drive</span></button>
+            <button class="sample" data-sample="neon-portrait.jpg"><span class="sample-thumb neon-thumb"></span><span>After hours</span></button>
+            <button class="sample" data-sample="sunset-drive.jpg"><span class="sample-thumb sunset-thumb"></span><span>Last light</span></button>
+          </div>
+          <div class="crop-controls"><label for="zoom">PANEL ZOOM <output id="zoom-value">1.0×</output></label><input id="zoom" type="range" min="0.5" max="3" step="0.05" value="1"><div class="button-row"><button id="fill" class="button button-quiet">↗ Fill frame</button><button id="clear" class="button button-quiet">Clear panel</button></div></div>
+        </section>
+        <section class="control-section caption-section">
+          <div class="section-heading"><span class="number">03</span><h2>Lettering</h2><span class="section-note">CAPTION</span></div>
+          <label class="field-label" for="title-input">TITLE</label><input id="title-input" class="text-field title-field" value="VICE CITY" maxlength="28">
+          <label class="field-label" for="subtitle-input">SUBTITLE</label><input id="subtitle-input" class="text-field" value="Sunset Heist" maxlength="48">
+          <div class="caption-options"><label for="title-size">TITLE SCALE <output id="size-value">100%</output></label><input id="title-size" type="range" min="65" max="145" value="100"><div class="caption-bottom"><div class="swatches" aria-label="Caption color"><button class="swatch active" data-color="#fffaf3" aria-label="White"></button><button class="swatch pink" data-color="#ff2e88" aria-label="Neon pink"></button><button class="swatch gold" data-color="#ffc93c" aria-label="Gold"></button><button class="swatch teal" data-color="#2de2c5" aria-label="Teal"></button></div><div class="segmented"><button class="position active" data-position="top">Top</button><button class="position" data-position="bottom">Bottom</button></div></div></div>
+        </section>
+        <section class="control-section grade-section">
+          <div class="section-heading"><span class="number">04</span><h2>Color grade</h2><span class="section-note">VICE CITY GRADE</span></div>
+          <div class="grade-options"><button class="grade-card active" data-grade="sunset"><span class="grade-art sunset-art"></span><span>Sunset</span></button><button class="grade-card" data-grade="neon"><span class="grade-art neon-art"></span><span>Neon Night</span></button><button class="grade-card" data-grade="pastel"><span class="grade-art pastel-art"></span><span>Pastel Day</span></button></div>
+          <label class="range-label" for="strength">GRADE STRENGTH <output id="strength-value">68%</output></label><input id="strength" type="range" min="0" max="100" value="68">
+          <label class="toggle"><input id="vignette" type="checkbox" checked><span class="switch"></span><span>Vignette + film grain</span></label>
+        </section>
+      </aside>
+      <section class="preview-area">
+        <div class="preview-toolbar"><div><span class="preview-kicker">LIVE PREVIEW</span><span id="preview-layout" class="preview-name">VICE CLASSIC</span></div><div class="size-picker" aria-label="Export dimensions"><button class="size-button" data-size="1080x1080">SQUARE <small>1:1</small></button><button class="size-button active" data-size="1080x1350">PORTRAIT <small>4:5</small></button><button class="size-button" data-size="1920x1080">LANDSCAPE <small>16:9</small></button></div></div>
+        <div class="canvas-stage"><div class="poster-wrap"><canvas id="poster" aria-label="Poster preview. Select a panel and drag to reframe its photo."></canvas><div class="preview-glint"></div><div class="canvas-label"><span class="tiny-star">✳</span> DRAG TO REFRAME</div></div></div>
+        <div class="preview-footer"><div class="selected-label"><span class="live-dot"></span><span id="selected-name">PANEL 01 · HERO</span><span class="footer-separator">/</span><span>DRAG PHOTO TO PAN</span></div><div class="saved-state"><span class="saved-check">✓</span><span id="status">Saved</span></div></div>
+        <div class="export-dock"><div><span class="dock-title">READY FOR THE FEED?</span><span id="chosen-size">1080 × 1350 px · portrait</span></div><button id="export-bottom" class="button button-primary">Export PNG <span aria-hidden="true">↗</span></button></div>
+      </section>
+    </main>
+  </div>
+  <main id="shot-stage" class="shot-stage" hidden><canvas id="shot-canvas"></canvas></main>
 </body>
 </html>
