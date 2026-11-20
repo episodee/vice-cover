@@ -1,8 +1,8 @@
 # Vice Cover
 
-[![gta6-cover-art-01](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01)
-[![Rank](https://make.fun/badge/gta6-cover-art-01/rank.svg?repo=episodee/vice-cover)](https://make.fun/bounty/gta6-cover-art-01)
-[![Reward](https://make.fun/badge/gta6-cover-art-01/reward.svg?repo=episodee/vice-cover)](https://make.fun/bounty/gta6-cover-art-01)
+[![make.fun · gta6-cover-art-01](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![rank](https://make.fun/badge/gta6-cover-art-01/episodee/vice-cover/rank.svg)](https://make.fun/bounty/gta6-cover-art-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![reward](https://make.fun/badge/gta6-cover-art-01/episodee/vice-cover/reward.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
 
 Vice Cover is an offline, original GTA 6-style cover art maker. Arrange your photos into poster panels, set a bold caption and a Vice City color grade, then export a share-ready PNG. It is an independent fan-made tool and is not affiliated with Rockstar Games.
 
